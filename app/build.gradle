@@ -7,8 +7,13 @@
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
-    id 'application'
+    id 'java'
+    id 'org.springframework.boot' version '3.3.0'
+    id 'io.spring.dependency-management' version '1.1.5'
 }
+
+group = 'com.messengerServer'
+version = '0.0.1-SNAPSHOT'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -16,11 +21,29 @@ repositories {
 }
 
 dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    // Lombok 라이브러리
+    compileOnly 'org.projectlombok:lombok'
+    //  Lombok 어노테이션 프로세서
+    annotationProcessor 'org.projectlombok:lombok'
+
+    //마이바티스 부트 스타터
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    //스프링 AWS 클라우드 스타터
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.2.6.RELEASE'
+    //마리아 db JDBC 드라이버
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    //spring boot Devtool 바뀐 쿼리 보여줌
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+
     // Use JUnit Jupiter for testing.
     testImplementation libs.junit.jupiter
-
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
     // This dependency is used by the application.
     implementation libs.guava
 }
@@ -30,11 +53,6 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(17)
     }
-}
-
-application {
-    // Define the main class for the application.
-    mainClass = 'org.example.App'
 }
 
 tasks.named('test') {
