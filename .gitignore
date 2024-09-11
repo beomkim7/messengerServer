@@ -11,7 +11,12 @@ application-*.properties
 
 # IntelliJ IDEA
 .idea
-/*.iml
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 # Eclipse
 /.classpath
