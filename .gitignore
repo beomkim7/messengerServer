@@ -10,7 +10,7 @@ application-*.properties
 /gradle-wrapper.properties
 
 # IntelliJ IDEA
-.idea/
+.idea
 /*.iml
 
 # Eclipse
